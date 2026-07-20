@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/Forecast-it/API/blob/master/README.md
+docs: https://support.forecast.app/hc/en-us/articles/33378026998289-Using-API-Keys
+api: Forecast API
+base_url: https://api.forecast.it/api/v1/
+summary: >-
+  Forecast uses a single static API-key scheme. Each integration is issued its
+  own API key from the Admin module and presents it on every request in the
+  X-FORECAST-API-KEY header over TLS. There is no OAuth 2.0, OpenID Connect, or
+  short-lived token flow. Keys grant full account access and can be disabled or
+  deleted from Admin if compromised.
+schemes:
+- id: forecast_api_key
+  type: apiKey
+  in: header
+  name: X-FORECAST-API-KEY
+  description: >-
+    Per-integration API key generated in the Forecast Admin module (Admin ->
+    API Keys -> Generate New API Key). Sent on every request. Grants full
+    access to the account; treat like a password. Keys can be individually
+    disabled or deleted if compromised.
+  required: true
+transport:
+  tls_required: true
+  notes: SSL only; all requests must be HTTPS.
+oauth2: false
+openid_connect: false
+mutual_tls: false
+key_management:
+  provisioning: Admin module, one key per integration recommended
+  rotation: supported (generate new key, disable/delete old)
+  revocation: supported (disable or delete key in Admin)
+notes: >-
+  Forecast was acquired by Accelo (2025) and the forecast.app brand now
+  redirects to accelo.com, but the api.forecast.it API host and X-FORECAST-API-KEY
+  scheme remain live.
