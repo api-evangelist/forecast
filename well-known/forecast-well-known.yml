@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: probed
+source: live HTTP probes 2026-07-19
+summary: >-
+  Probed standard .well-known and discovery paths on the Forecast API host and
+  the forecast.app web host. No 200 responses; nothing to save. (forecast.app
+  now 301-redirects to accelo.com after the Accelo acquisition.)
+probes:
+- url: https://api.forecast.it/.well-known/security.txt
+  status: 404
+  file: null
+- url: https://www.forecast.app/.well-known/security.txt
+  status: 301
+  file: null
+- url: https://api.forecast.it/.well-known/openid-configuration
+  status: 404
+  file: null
+- url: https://api.forecast.it/.well-known/oauth-authorization-server
+  status: 404
+  file: null
+- url: https://api.forecast.it/.well-known/api-catalog
+  status: 404
+  file: null

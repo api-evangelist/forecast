@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: derived
+source: https://github.com/Forecast-it/API/blob/master/README.md
+api: Forecast API
+summary: >-
+  Conformance assertions for cross-cutting API standards, derived from the
+  Forecast API documentation. Forecast is a plain REST/JSON API with static
+  API-key auth; it does not implement OAuth/OIDC or the common problem/pagination
+  standards.
+standards:
+- id: rest
+  conforms: true
+  evidence: REST-style API over HTTP with resource paths and standard verbs (GET/POST/PUT/DELETE).
+- id: json
+  conforms: true
+  evidence: JSON-only serialization; 415 returned when Content-Type is not application/json.
+- id: oauth2
+  conforms: false
+  evidence: Authentication is a static X-FORECAST-API-KEY header; no OAuth 2.0 flow documented.
+- id: oidc
+  conforms: false
+  evidence: No OpenID Connect discovery or ID tokens documented.
+- id: rfc9457
+  conforms: false
+  evidence: Errors use a custom {status, message} JSON envelope, not application/problem+json.
+- id: pagination
+  conforms: partial
+  evidence: >-
+    Custom page-number pagination (pageNumber/pageSize -> pageContents) on newer
+    endpoints; not RFC 5988 Link headers or cursor-based.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key header or safe-retry semantics documented for writes.
+- id: webhooks
+  conforms: true
+  evidence: Documented webhook subscription resource with signed event payloads and retry policy.
+- id: fhir
+  conforms: false
+  evidence: Not a healthcare API.
+- id: fapi
+  conforms: false
+  evidence: Not a financial-grade API profile.
+- id: scim
+  conforms: false
+  evidence: User/person management is via native Forecast resources, not SCIM.
+- id: odata
+  conforms: false
+  evidence: No OData query conventions.
+- id: 'json:api'
+  conforms: false
+  evidence: Responses are plain JSON objects/arrays, not JSON:API documents.

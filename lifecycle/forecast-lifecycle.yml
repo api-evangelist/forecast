@@ -1,0 +1,50 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/Forecast-it/API/blob/master/README.md
+api: Forecast API
+summary: >-
+  Forecast versions the API per-resource in the URL path. Backward-incompatible
+  changes bump a resource's version marker while old URLs stay supported, so
+  multiple resource versions (v1-v4) coexist. Deprecated endpoints are marked in
+  the docs but continue to respond. Usage is bounded by a published fair-use
+  policy rather than hard rate limits.
+versioning:
+  scheme: per-resource path segment (v1..v4)
+  base: https://api.forecast.it/api/v1/
+  stability: >-
+    "If we change the API in backward-incompatible ways, we'll increment the
+    version marker and maintain stable support for the old URLs."
+  current_by_resource:
+    tasks: v4
+    time_registrations: v4
+    persons: v2
+    projects: v1 (v2 for financials)
+deprecation:
+  policy: >-
+    Older resource versions and specific endpoints are marked DEPRECATED in the
+    API docs but remain callable; consumers are steered to the newer version.
+  header_signaling:
+    sunset_header: not documented
+    deprecation_header: not documented
+  deprecated_examples:
+  - GET /v2/tasks (superseded by v3/v4)
+  - GET /v3/time_registrations (superseded by v4)
+  - GET /projects/{projectId}/financials (v1, superseded by v2)
+  - Milestones resource (renamed to Phases)
+fair_use:
+  policy_url: https://www.forecast.app/fair-use-policy
+  note: Governs acceptable API usage volume in lieu of published rate-limit headers.
+status_page:
+  available: false
+  probed:
+  - url: https://status.forecast.app/
+    status: no-response
+sla:
+  documented: false
+change_communication:
+  api_docs_repo: https://github.com/Forecast-it/API
+  product_updates: https://support.forecast.app/hc/en-us
+ownership_note: >-
+  Forecast was acquired by Accelo in 2025; the forecast.app brand has been
+  integrated into accelo.com, though the api.forecast.it API endpoints remain
+  operational.

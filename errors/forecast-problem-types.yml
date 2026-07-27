@@ -1,0 +1,52 @@
+generated: '2026-07-19'
+method: derived
+source: https://github.com/Forecast-it/API/blob/master/README.md
+api: Forecast API
+format: custom-json
+media_type: application/json
+envelope:
+  fields:
+    status: Integer HTTP status code, mirrors the response status.
+    message: String describing the problem.
+  example: |
+    {
+      "status": 401,
+      "message": "Server failed to authenticate the request."
+    }
+notes: >-
+  Forecast does NOT use RFC 9457 application/problem+json. Errors are a flat
+  JSON object with status + message. Titles/remediation below are derived from
+  the API README error handling section.
+problem_types:
+- status: 400
+  title: Bad Request
+  meaning: Provided input is invalid; the message states the specific problem.
+  remediation: Validate the request body/params against the resource docs and resend.
+- status: 401
+  title: Unauthorized
+  meaning: Failure to authenticate the API key.
+  remediation: Check the X-FORECAST-API-KEY header; regenerate the key in Admin if disabled.
+- status: 404
+  title: Not Found
+  meaning: The target resource for GET/POST/PUT/DELETE does not exist.
+  remediation: Verify the resource id and path (including the version marker).
+- status: 415
+  title: Unsupported Media Type
+  meaning: Missing or wrong Content-Type on a POST/PUT.
+  remediation: Send Content-Type application/json; charset=utf-8.
+- status: 500
+  title: Internal Server Error
+  meaning: The application is entirely down.
+  remediation: Retry later with backoff.
+- status: 502
+  title: Bad Gateway
+  meaning: Upstream gateway error.
+  remediation: Retry later with backoff.
+- status: 503
+  title: Service Unavailable
+  meaning: Service temporarily unavailable.
+  remediation: Retry later with backoff.
+- status: 504
+  title: Gateway Timeout
+  meaning: Upstream request timed out.
+  remediation: Retry later with backoff.

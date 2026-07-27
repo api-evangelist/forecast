@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: generated
+source: https://github.com/Forecast-it/API
+api: Forecast API
+summary: >-
+  Packaged Agent Skills for marquee Forecast flows, each grounded in real
+  documented REST operations.
+skills:
+- name: forecast-log-time
+  file: forecast-log-time.md
+  description: Log time against a task or project and confirm it recorded.
+- name: forecast-create-project
+  file: forecast-create-project.md
+  description: Create a project for a client and seed it with tasks.
+- name: forecast-webhook-subscribe
+  file: forecast-webhook-subscribe.md
+  description: Subscribe to task/project/phase/time events via webhooks.

@@ -1,0 +1,85 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/Forecast-it/API/blob/master/README.md
+api: Forecast API
+base_url: https://api.forecast.it/api/v1/
+summary: >-
+  Cross-cutting runtime semantics for the Forecast REST API: static API-key
+  auth, JSON-only serialization, custom page-number pagination, a per-resource
+  path-versioning scheme, and a simple status/message error envelope. No
+  idempotency keys, sparse fieldsets, or expansion are documented.
+auth:
+  style: api_key_header
+  header: X-FORECAST-API-KEY
+  ref: ../authentication/forecast-authentication.yml
+serialization:
+  formats:
+  - application/json
+  request_content_type: application/json; charset=utf-8
+  notes: >-
+    JSON only. POST/PUT without a Content-Type of application/json return
+    415 Unsupported Media Type. All URLs accept and return JSON only.
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency key header or safe-retry semantics are documented for
+    POST/PUT. Clients must guard against duplicate writes themselves.
+pagination:
+  style: page-number
+  applies_to: paginated collection endpoints (e.g. v4/tasks, v4/time_registrations)
+  request_params:
+  - name: pageNumber
+    description: Positive integer, defaults to 1 if missing or invalid.
+  - name: pageSize
+    description: Positive integer, defaults to 100; maximum subject to change.
+  response_fields:
+  - pageNumber
+  - pageSize
+  - totalObjectCount
+  - pageContents
+  notes: >-
+    Not all endpoints are paginated; newer resource versions (v4) introduced
+    pagination where older ones returned full arrays.
+incremental_sync:
+  supported: true
+  mechanism: updated_after / date_after path segments or query params
+  examples:
+  - GET /v4/tasks/updated_after/20180216T210047
+  - GET /v4/time_registrations/date_after/20200216
+field_expansion:
+  supported: false
+  related: >-
+    Some endpoints accept opt-in query flags (e.g. projects?includeProgress=true)
+    but there is no general sparse-fieldset or expansion syntax.
+metadata:
+  supported: partial
+  notes: >-
+    Several resources expose custom_* identifiers (custom_project_id,
+    company_project_id, company_task_id) plus a custom_fields resource for
+    user-defined attributes.
+request_id_tracing:
+  documented: false
+versioning:
+  style: per-resource-path
+  detail: >-
+    The API version marker lives in the URL path and is incremented per
+    resource, not globally. Base is /api/v1/ but individual resources expose
+    higher versions (tasks up to v4, persons v2, time_registrations v4).
+    Backward-incompatible changes increment the marker; old URLs stay
+    supported. See lifecycle/forecast-lifecycle.yml.
+  ref: ../lifecycle/forecast-lifecycle.yml
+error_envelope:
+  format: custom-json
+  media_type: application/json
+  shape:
+    status: integer HTTP status code
+    message: descriptive string explaining the error
+  ref: ../errors/forecast-problem-types.yml
+  notes: Not RFC 9457 problem+json.
+rate_limiting:
+  policy: fair-use
+  signaling: not documented (no published X-RateLimit headers)
+  reference: https://www.forecast.app/fair-use-policy
+webhooks:
+  supported: true
+  ref: ../asyncapi/forecast-webhooks.yml

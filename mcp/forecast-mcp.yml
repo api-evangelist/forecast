@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: https://github.com/Forecast-it/API
+api: Forecast API
+summary: >-
+  No official or third-party hosted MCP server for Forecast was found (searched
+  the web and the MCP registry, 2026-07). This is a DERIVED candidate tool list
+  mapped from documented Forecast REST operations, provided as a design sketch
+  for a future MCP server. Not published, not hosted.
+transport: null
+endpoint: null
+auth:
+  scheme: apiKey
+  header: X-FORECAST-API-KEY
+candidate_tools:
+- name: list_projects
+  description: List all projects, optionally with progress data.
+  maps_to: GET /v1/projects
+- name: get_project
+  description: Retrieve a single project by id.
+  maps_to: GET /v1/projects/{projectId}
+- name: create_project
+  description: Create a new project.
+  maps_to: POST /v1/projects
+- name: update_project
+  description: Update an existing project.
+  maps_to: PUT /v1/projects/{projectId}
+- name: list_tasks
+  description: List tasks across the account (paginated), or updated after a timestamp.
+  maps_to: GET /v4/tasks
+- name: get_task
+  description: Retrieve a single task by id.
+  maps_to: GET /v3/tasks/{taskId}
+- name: create_task
+  description: Create a new task.
+  maps_to: POST /v3/tasks
+- name: list_time_registrations
+  description: List time registrations (paginated), or by updated/date after.
+  maps_to: GET /v4/time_registrations
+- name: create_time_registration
+  description: Log time against a task or project.
+  maps_to: POST /v1/time_registrations
+- name: list_allocations
+  description: List resource allocations.
+  maps_to: GET /v1/allocations
+- name: create_allocation
+  description: Create a resource allocation.
+  maps_to: POST /v1/allocations
+- name: list_persons
+  description: List people in the account.
+  maps_to: GET /v2/persons
+- name: person_utilization
+  description: Get a person's utilization for a date range.
+  maps_to: GET /v1/persons/{personId}/utilization
+- name: list_clients
+  description: List clients.
+  maps_to: GET /v1/clients

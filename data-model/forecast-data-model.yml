@@ -1,0 +1,118 @@
+generated: '2026-07-19'
+method: derived
+source: https://github.com/Forecast-it/API
+api: Forecast API
+summary: >-
+  Entity-relationship graph for the Forecast project & resource management API,
+  derived from the documented resource sections and their id-reference fields.
+  Integer ids are used throughout; several entities also expose custom_* /
+  company_* alternate identifiers.
+id_conventions:
+  primary: integer id per resource
+  alternates:
+  - company_project_id / custom_project_id (projects)
+  - company_task_id (tasks)
+entities:
+- name: project
+  key: id
+  alt_keys: [company_project_id, custom_project_id]
+  relationships:
+  - has_many: tasks
+    via: projectId
+  - has_many: phases
+    via: projectId
+  - has_many: allocations
+    via: projectId
+  - has_many: time_registrations
+    via: projectId
+  - has_many: sprints
+    via: projectId
+  - belongs_to: client
+    via: client
+  - belongs_to: rate_card
+    via: rate_card
+- name: task
+  key: id
+  alt_keys: [company_task_id]
+  relationships:
+  - belongs_to: project
+    via: project_id
+  - belongs_to: phase
+    via: phase_id
+  - has_many: sub_tasks
+    via: taskId
+  - has_many: time_registrations
+    via: task_id
+  - has_many: comments
+    via: taskId
+- name: sub_task
+  key: id
+  relationships:
+  - belongs_to: task
+    via: taskId
+- name: phase
+  key: id
+  relationships:
+  - belongs_to: project
+    via: projectId
+- name: sprint
+  key: id
+  relationships:
+  - belongs_to: project
+    via: projectId
+- name: time_registration
+  key: id
+  relationships:
+  - belongs_to: task
+    via: task_id
+  - belongs_to: project
+    via: project_id
+  - belongs_to: person
+    via: person_id
+- name: allocation
+  key: id
+  relationships:
+  - belongs_to: project
+    via: projectId
+  - belongs_to: person
+    via: personId
+- name: person
+  key: id
+  relationships:
+  - has_many: time_registrations
+    via: personId
+  - has_many: allocations
+    via: personId
+  - has_many: projects
+    via: personId
+  - has_many: skills
+    via: personId
+- name: client
+  key: id
+  relationships:
+  - has_many: projects
+    via: client
+- name: rate_card
+  key: id
+  relationships:
+  - has_many: rate_card_versions
+    via: rateCardId
+  - has_many: rate_card_rates
+    via: rateCardId
+- name: role
+  key: id
+- name: skill
+  key: id
+  relationships:
+  - belongs_to: skill_category
+    via: skillCategoryId
+- name: invoice
+  key: id
+  relationships:
+  - belongs_to: client
+    via: clientId
+- name: webhook_subscription
+  key: id
+render:
+  subway: null
+  note: No subway/ diagram generated for this repo.

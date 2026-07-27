@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: searched
+probe: true
+source: https://www.accelo.com/company/security
+url: https://www.accelo.com/company/security
+certifications:
+- SOC 2
+- ISO 27017
+- ISO 27018
+- PCI DSS
+- FIPS 140
+evidence:
+- source: https://www.accelo.com/company/security
+  keywords:
+  - soc 2
+  - pci dss
+  - pci-dss

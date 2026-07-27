@@ -1,0 +1,60 @@
+generated: '2026-07-19'
+method: searched
+source: https://github.com/Forecast-it/API/blob/master/sections/webhook_subscriptions.md
+type: Webhooks
+api: Forecast API
+summary: >-
+  Forecast exposes an outbound webhook system. Consumers register subscriptions
+  (via the webhook_subscriptions REST resource) for task, time-registration,
+  project, and phase events; Forecast POSTs a signed event payload to the
+  subscriber URL and retries up to 5 times with increasing backoff on non-2xx.
+management:
+  resource: webhook_subscriptions
+  endpoints:
+  - GET /v1/webhook_subscriptions
+  - GET /v1/webhook_subscriptions/{id}
+  - POST /v1/webhook_subscriptions
+  - PUT /v1/webhook_subscriptions/{id}
+  - DELETE /v1/webhook_subscriptions/{id}
+  subscription_fields:
+    id: Integer
+    name: String
+    type: String (TASK, TIME_REG, PROJECT, PHASE)
+    event: String (CREATE, UPDATE, DELETE)
+    url: String delivery endpoint
+    active: Boolean
+delivery:
+  transport: HTTPS POST to subscriber URL
+  payload_fields:
+    timestamp: UTC timestamp of the event
+    event: object-type + event-type string (e.g. task_updated)
+    object.id: id of the affected object
+    person.id: id of the person who triggered the event
+    fields_changed: array of field names (UPDATE events only)
+  example: |
+    {
+      "timestamp": "2021-09-23T07:30:00Z",
+      "event": "task_updated",
+      "object": { "id": 655383 },
+      "person": { "id": 50363 },
+      "fields_changed": ["description"]
+    }
+  retries:
+    condition: response status code other than 2xx
+    max_attempts: 5
+    schedule_minutes: [1, 2, 3, 5, 10]
+event_catalog:
+  object_types:
+  - TASK
+  - TIME_REG
+  - PROJECT
+  - PHASE
+  event_types:
+  - CREATE
+  - UPDATE
+  - DELETE
+asyncapi_spec:
+  available: false
+  note: >-
+    No machine-readable AsyncAPI document is published; this is a derived
+    catalog of the documented webhook surface.

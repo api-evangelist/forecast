@@ -1,20 +1,82 @@
 aid: forecast
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/forecast.png
 name: forecast
-description: forecast is a company surfaced as a portfolio company of balderton-capital and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Forecast is an AI-powered project and resource management platform (a
+  professional services automation / PSA tool) for project-driven companies,
+  covering predictive project planning, resource allocation, capacity planning,
+  time tracking, budgets, rate cards, and financial forecasting. Forecast
+  exposes a complete REST API (JSON over HTTPS at api.forecast.it) for projects,
+  tasks, time registrations, allocations, people, clients, and webhooks,
+  authenticated with a per-integration API key. Originally a Danish/UK startup
+  backed by Balderton Capital, Forecast was acquired by Accelo in 2025 and the
+  forecast.app brand has since been integrated into accelo.com, while the
+  api.forecast.it API endpoints remain operational. Added to the API Evangelist
+  network from a VC-portfolio lead and enriched from the public Forecast API
+  documentation.
 url: https://raw.githubusercontent.com/api-evangelist/forecast/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - balderton-capital
+x-acquired-by: accelo
 x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Project Management
+- Resource Management
+- Professional Services Automation
+- Time Tracking
+- PSA
+- API
+apis:
+- name: Forecast API
+  description: >-
+    REST-style JSON API exposing the full Forecast platform: projects, tasks,
+    sub-tasks, phases, sprints, time registrations, allocations, persons,
+    clients, rate cards, invoices, and webhook subscriptions. TLS only,
+    per-resource path versioning (v1-v4), API-key auth via X-FORECAST-API-KEY.
+  humanURL: https://github.com/Forecast-it/API
+  baseURL: https://api.forecast.it/api/v1/
+  properties:
+  - type: Authentication
+    url: authentication/forecast-authentication.yml
+  - type: Conventions
+    url: conventions/forecast-conventions.yml
+  - type: ErrorCatalog
+    url: errors/forecast-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/forecast-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/forecast-lifecycle.yml
+  - type: Conformance
+    url: conformance/forecast-conformance.yml
+  - type: Webhooks
+    url: asyncapi/forecast-webhooks.yml
+  - type: DataModel
+    url: data-model/forecast-data-model.yml
+  - type: MCPServer
+    url: mcp/forecast-mcp.yml
+  - type: LLMsTxt
+    url: llms/forecast-llms.txt
+  - type: AgentSkill
+    url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +85,36 @@ maintainers:
 common:
 - type: Website
   url: https://www.forecast.app/
+- type: Documentation
+  url: https://github.com/Forecast-it/API
+- type: APIReference
+  url: https://support.forecast.app/hc/en-us/articles/5153680387473-API-Documentation
+- type: GettingStarted
+  url: https://github.com/Forecast-it/API/blob/master/README.md
+- type: GitHubOrganization
+  url: https://github.com/Forecast-it
+- type: Support
+  url: https://support.forecast.app/hc/en-us
+- type: Blog
+  url: https://www.forecast.app/blog
+- type: Pricing
+  url: https://www.forecast.app/pricing
+- type: TermsOfService
+  url: https://www.forecast.app/terms
+- type: PrivacyPolicy
+  url: https://www.forecast.app/privacy
+- type: DomainSecurity
+  url: security/forecast-domain-security.yml
+- type: Security
+  url: security/forecast-vulnerability-disclosure.yml
+- type: VulnerabilityDisclosure
+  url: security/forecast-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/forecast-trust-center.yml
+- type: Compliance
+  url: security/forecast-trust-center.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
