@@ -3,11 +3,9 @@ method: derived
 status: candidate
 source: https://github.com/Forecast-it/API
 api: Forecast API
-summary: >-
-  No official or third-party hosted MCP server for Forecast was found (searched
-  the web and the MCP registry, 2026-07). This is a DERIVED candidate tool list
-  mapped from documented Forecast REST operations, provided as a design sketch
-  for a future MCP server. Not published, not hosted.
+summary: No official or third-party hosted MCP server for Forecast was found (searched the web and the
+  MCP registry, 2026-07). This is a DERIVED candidate tool list mapped from documented Forecast REST operations,
+  provided as a design sketch for a future MCP server. Not published, not hosted.
 transport: null
 endpoint: null
 auth:
@@ -56,3 +54,8 @@ candidate_tools:
 - name: list_clients
   description: List clients.
   maps_to: GET /v1/clients
+deployment:
+  mode: none
+  verified: derived
+  checked: '2026-08-12'
+  source: catalog MCP census
