@@ -64,6 +64,107 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-forecast is a company surfaced as a portfolio company of balderton-capital and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Forecast is an AI-powered project and resource management platform (a professional services automation / PSA tool) for project-driven companies, covering predictive project planning, resource allocation, capacity planning, time tracking, budgets, rate cards, and financial forecasting. Forecast exposes a complete REST API (JSON over HTTPS at api.forecast.it) for projects, tasks, time registrations, allocations, people, clients, and webhooks, authenticated with a per-integration API key. Originally a Danish/UK startup backed by Balderton Capital, Forecast was acquired by Accelo in 2025 and the forecast.app brand has since been integrated into accelo.com, while the api.forecast.it API endpoints remain operational. Added to the API Evangelist network from a VC-portfolio lead and enriched from the public Forecast API documentation.
 
-Backed by: balderton-capital — https://www.forecast.app/
+**Areas:** Company · Project Management · Resource Management · Professional Services Automation · Time Tracking · PSA
+
+## forecast on APIs.io
+
+Everything profiled for forecast is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/forecast/](https://apis.io/providers/forecast/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Forecast API](https://apis.io/apis/forecast/forecast-api/) — REST-style JSON API exposing the full Forecast platform: projects, tasks, sub-tasks, phases, sprints, time registrations, allocations, persons, clients,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Forecast Webhooks](https://apis.io/asyncapis/forecast/forecast-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [forecast-mcp.yml](https://apis.io/servers/forecast/forecast-mcp-yml/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Forecast Authentication](https://apis.io/security/forecast/forecast-authentication/)
+- [Forecast Domain Security](https://apis.io/security/forecast/forecast-domain-security/)
+- [Forecast Trust Center](https://apis.io/security/forecast/forecast-trust-center/)
+- [Forecast Vulnerability Disclosure](https://apis.io/security/forecast/forecast-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.forecast.app/)
+- [Documentation](https://github.com/Forecast-it/API)
+- [Getting started](https://github.com/Forecast-it/API/blob/master/README.md)
+- [API reference](https://support.forecast.app/hc/en-us/articles/5153680387473-API-Documentation)
+- [Pricing](https://www.forecast.app/pricing)
+- [Support](https://support.forecast.app/hc/en-us)
+- [Blog](https://www.forecast.app/blog)
+- [Terms of service](https://www.forecast.app/terms)
+- [Privacy policy](https://www.forecast.app/privacy)
+- [GitHub](https://github.com/Forecast-it)
+
+## API Evangelist rating
+
+**Kin Score 37.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 47.0 |
+| Access clarity | 26.3 |
+
+**Agent readiness 21.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/forecast/](https://apis.io/providers/forecast/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for forecast: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/forecast/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
